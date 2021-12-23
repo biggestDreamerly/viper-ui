@@ -5,39 +5,43 @@
     </section>
 
     <div v-show="codeVisible" class="source-code">
-      <pre class="language-html"><code class="language-html">{{ previewSourceCode }}</code></pre>
+      <pre
+        class="language-html"
+      ><code class="language-html">{{ previewSourceCode }}</code></pre>
     </div>
 
     <div class="preview-bottom">
-      <span name="Code" @click="showSourceCode">查看代码</span>
+      <span name="Code" @click="showSourceCode">{{
+        !codeVisible ? "查看实例" : "隐藏"
+      }}</span>
     </div>
   </div>
 </template>
 
 <script>
-import Prism from 'prismjs';
-import '../assets/prism.css';
+import Prism from "prismjs";
+import "../assets/prism.css";
 
-const isDev = import.meta.env.MODE === 'development';
+const isDev = import.meta.env.MODE === "development";
 
 export default {
   props: {
     /** 组件名称 */
     compName: {
       type: String,
-      default: '',
+      default: "",
       require: true,
     },
     /** 要显示代码的组件 */
     demoName: {
       type: String,
-      default: '',
+      default: "",
       require: true,
     },
   },
   data() {
     return {
-      sourceCode: '',
+      sourceCode: "",
       codeVisible: false,
     };
   },
@@ -50,10 +54,14 @@ export default {
     if (this.compName && this.demoName) {
       if (isDev) {
         this.sourceCode = (
-          await import(/* @vite-ignore */ `../../packages/${this.compName}/docs/${this.demoName}.vue?raw`)
+          await import(
+            /* @vite-ignore */ `../../packages/${this.compName}/docs/${this.demoName}.vue?raw`
+          )
         ).default;
       } else {
-        this.sourceCode = await fetch(`${isDev ? '' : '/viperUi'}/packages/${this.compName}/docs/${this.demoName}.vue`).then((res) => res.text());
+        this.sourceCode = await fetch(
+          `${isDev ? "" : "/viperUi"}/packages/${this.compName}/docs/${this.demoName}.vue`
+        ).then((res) => res.text());
       }
     }
     await this.$nextTick();
@@ -97,5 +105,19 @@ pre {
   justify-content: center;
   align-items: center;
   border-top: 1px dashed #e7e7e7;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.preview-bottom :hover {
+  color: #fff;
+  background: #333;
+  transition: 0.5s;
+}
+.preview-bottom span {
+  width: 100%;
 }
 </style>

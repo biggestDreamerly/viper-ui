@@ -7,8 +7,8 @@
  */
 import { App, Plugin } from 'vue';
 
-import { ButtonPlugin } from './Button';
-import { FooPlugin } from './Foo';
+import { ButtonPlugin } from './button';
+import { FooPlugin } from './foo';
 
 const MYKitPlugin: Plugin = {
   install(app: App) {

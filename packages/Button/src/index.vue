@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-defineEmits(['click'])
+defineEmits(["click"]);
 </script>
 
 <style scoped lang="less">
