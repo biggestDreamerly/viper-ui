@@ -1,4 +1,4 @@
-import { defineComponent, openBlock, createElementBlock, renderSlot } from "vue";
+import { openBlock, createElementBlock, normalizeClass, renderSlot } from "vue";
 var index_vue_vue_type_style_index_0_scoped_true_lang$3 = "";
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -7,23 +7,31 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const _sfc_main$3 = /* @__PURE__ */ defineComponent({
-  emits: ["click"],
+const _sfc_main$3 = {
+  props: {
+    type: String
+  },
   setup(__props) {
+    const props = __props;
+    const getType = () => {
+      var _a;
+      console.log(props.type, "\u7C7B\u578B");
+      return (_a = props == null ? void 0 : props.type) != null ? _a : "defalut";
+    };
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", {
-        class: "my-button",
+        class: normalizeClass(["my-button", getType()]),
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("click", $event))
       }, [
         renderSlot(_ctx.$slots, "default", {}, void 0, true)
-      ]);
+      ], 2);
     };
   }
-});
-var Button$1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-483190c4"]]);
+};
+var Button$1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-9bf61cbe"]]);
 const ButtonPlugin$1 = {
   install(app) {
-    app.component("my-button", Button$1);
+    app.component("v-button", Button$1);
   }
 };
 var index_vue_vue_type_style_index_0_scoped_true_lang$2 = "";
@@ -39,23 +47,31 @@ const FooPlugin$1 = {
   }
 };
 var index_vue_vue_type_style_index_0_scoped_true_lang$1 = "";
-const _sfc_main$1 = /* @__PURE__ */ defineComponent({
-  emits: ["click"],
+const _sfc_main$1 = {
+  props: {
+    type: String
+  },
   setup(__props) {
+    const props = __props;
+    const getType = () => {
+      var _a;
+      console.log(props.type, "\u7C7B\u578B");
+      return (_a = props == null ? void 0 : props.type) != null ? _a : "defalut";
+    };
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", {
-        class: "my-button",
+        class: normalizeClass(["my-button", getType()]),
         onClick: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("click", $event))
       }, [
         renderSlot(_ctx.$slots, "default", {}, void 0, true)
-      ]);
+      ], 2);
     };
   }
-});
-var Button = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-3d7550a4"]]);
+};
+var Button = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-638e8dc1"]]);
 const ButtonPlugin = {
   install(app) {
-    app.component("my-button", Button);
+    app.component("v-button", Button);
   }
 };
 var index_vue_vue_type_style_index_0_scoped_true_lang = "";
